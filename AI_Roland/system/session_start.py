@@ -3,8 +3,10 @@ AI Roland 会话启动脚本
 每次启动 Claude 时自动执行：
 1. 检查并启动守护进程
 2. 加载对话历史摘要
-3. 显示当前任务状态
-4. 生成今日简报
+3. 搜索相关语义记忆
+4. 显示当前任务状态
+5. 生成上下文恢复提示
+v2. 增强上下文恢复功能
 """
 
 import sys
@@ -109,11 +111,25 @@ class SessionStarter:
             "daily": extract_tasks(daily_tasks)
         }
 
+    def search_related_memories(self, query: str = "记忆 系统 任务") -> List[Dict]:
+        """搜索相关的语义记忆"""
+        try:
+            # 导入记忆搜索模块
+            from memory_search import MemorySearch
+
+            search = MemorySearch(self.workspace)
+            results = search.search(query, top_k=5)
+
+            return results
+        except Exception as e:
+            print(f"[WARN] 搜索记忆失败: {e}")
+            return []
+
     def generate_briefing(self) -> str:
-        """生成会话简报"""
+        """生成会话简报（增强版：包含上下文恢复）"""
         lines = []
         lines.append("=" * 60)
-        lines.append("[AI Roland] 会话启动")
+        lines.append("[AI Roland] 会话启动 - 上下文恢复")
         lines.append("=" * 60)
         lines.append("")
 
@@ -129,18 +145,41 @@ class SessionStarter:
             lines.append("  守护进程: [WARN] 未启动")
         lines.append("")
 
-        # 2. 最近对话历史
+        # 2. 最近对话历史（上下文）
         history = self.load_chat_history(limit=3)
         if history:
-            lines.append("[最近对话]")
+            lines.append("[最近对话 - 上下文恢复]")
             lines.append("-" * 60)
             for i, session in enumerate(history, 1):
                 lines.append(f"  {i}. [{session['date']}]")
-                lines.append(f"     用户: {session['user'][:50]}...")
-                lines.append(f"     任务: {session['task'][:50]}...")
+                lines.append(f"     用户: {session['user'][:60]}...")
+                lines.append(f"     AI: {session['ai'][:60]}...")
+                # 显示关键任务
+                task_lines = session['task'].split('\n')
+                if task_lines and task_lines[0].strip():
+                    lines.append(f"     任务: {task_lines[0][:60]}...")
             lines.append("")
 
-        # 3. 当前任务
+        # 3. 相关语义记忆
+        memories = self.search_related_memories()
+        if memories:
+            lines.append("[相关记忆 - 知识检索]")
+            lines.append("-" * 60)
+            for i, mem in enumerate(memories[:3], 1):
+                doc = mem["document"]
+                name = doc.get("name", doc.get("date", "N/A"))
+                lines.append(f"  {i}. {name}")
+                lines.append(f"     相似度: {mem['similarity']:.3f}")
+                # 提取第一行作为简介
+                content_lines = doc["content"].split('\n')
+                for line in content_lines:
+                    line = line.strip()
+                    if line and not line.startswith('#'):
+                        lines.append(f"     简介: {line[:60]}...")
+                        break
+            lines.append("")
+
+        # 4. 当前任务
         tasks = self.load_tasks()
         if tasks["total"] > 0:
             lines.append("[当前任务]")
@@ -166,6 +205,15 @@ class SessionStarter:
             lines.append("-" * 60)
             lines.append("  [OK] 没有待办任务")
             lines.append("")
+
+        # 5. 下一步建议
+        lines.append("[继续工作]")
+        lines.append("-" * 60)
+        lines.append("  你可以:")
+        lines.append("  - 继续上次的任务")
+        lines.append("  - 开始新任务")
+        lines.append("  - 查看更多信息")
+        lines.append("")
 
         lines.append("=" * 60)
         lines.append("")
@@ -218,6 +266,13 @@ class SessionStarter:
 
 def main():
     """主函数"""
+    import sys
+    import io
+
+    # 设置标准输出为 UTF-8
+    if sys.platform == 'win32':
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+
     starter = SessionStarter()
     result = starter.start_session()
 
