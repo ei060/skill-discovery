@@ -1,6 +1,7 @@
 """
 记忆搜索系统 - 基于语义相似度的智能检索
 使用 TF-IDF 和余弦相似度进行语义搜索
+v2.0: 集成 jieba 分词，提升中文搜索准确度
 """
 
 import re
@@ -9,6 +10,7 @@ from pathlib import Path
 from typing import List, Dict, Tuple
 from collections import Counter
 import math
+import jieba
 
 
 class MemorySearch:
@@ -87,18 +89,34 @@ class MemorySearch:
         return documents
 
     def tokenize(self, text: str) -> List[str]:
-        """简单的分词（中文和英文）"""
-        # 移除特殊字符
+        """使用 jieba 分词（中文和英文）"""
+        # 移除特殊字符，保留中英文、数字、空格
         text = re.sub(r'[^\w\s\u4e00-\u9fff]', ' ', text)
-        # 分词（简单按空格和汉字分割）
-        tokens = []
-        for word in text.split():
-            # 如果是中文，每个字作为一个 token
-            if any('\u4e00' <= char <= '\u9fff' for char in word):
-                tokens.extend(list(word))
-            else:
-                tokens.append(word.lower())
-        return tokens
+
+        # 使用 jieba 分词
+        tokens = jieba.lcut(text)
+
+        # 过滤和清理
+        filtered_tokens = []
+        for token in tokens:
+            token = token.strip()
+            # 过滤单字符和空字符串
+            if len(token) <= 1:
+                continue
+            # 过滤纯数字
+            if token.isdigit():
+                continue
+            # 过滤纯标点
+            if not any(char.isalnum() or '\u4e00' <= char <= '\u9fff' for char in token):
+                continue
+
+            # 英文转小写
+            if not any('\u4e00' <= char <= '\u9fff' for char in token):
+                token = token.lower()
+
+            filtered_tokens.append(token)
+
+        return filtered_tokens
 
     def compute_tfidf(self, documents: List[Dict]) -> Dict[str, Dict[str, float]]:
         """计算 TF-IDF"""
@@ -231,9 +249,16 @@ class MemorySearch:
 
 def main():
     """测试记忆搜索"""
+    import sys
+    import io
+
+    # 设置标准输出为 UTF-8
+    if sys.platform == 'win32':
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+
     search = MemorySearch()
 
-    print("=== 记忆搜索系统测试 ===\n")
+    print("=== 记忆搜索系统测试（jieba 分词）===\n")
 
     print("1. 加载文档:")
     documents = search.load_documents()
@@ -251,9 +276,13 @@ def main():
 
     for i, result in enumerate(results, 1):
         doc = result["document"]
+        # 移除 emoji 和特殊字符，避免编码错误
+        snippet = result['snippet'][:80]
+        snippet = ''.join(c if ord(c) < 128 else '?' for c in snippet)
+
         print(f"   {i}. [{doc['type']}] {doc.get('date', doc.get('name', 'N/A'))}")
         print(f"      相似度: {result['similarity']:.3f}")
-        print(f"      片段: {result['snippet'][:80]}...")
+        print(f"      片段: {snippet}...")
         print()
 
     print("3. 测试按类型搜索:")
