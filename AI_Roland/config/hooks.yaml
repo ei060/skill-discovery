@@ -1,0 +1,30 @@
+# Hooks 配置文件
+# 在特定事件发生时自动执行的脚本
+
+# 用户提交问题时触发的 Hooks
+user_prompt_submit:
+  - "echo '[Hook] 用户提问: $(date +%H:%M:%S)'"
+  - "python ../system/task_utils.py"  # 自动更新任务统计
+
+# AI 回复后触发的 Hooks
+assistant_response:
+  - "echo '[Hook] AI 回复完成: $(date +%H:%M:%S)'"
+
+# AI 调用工具时触发的 Hooks
+tool_call:
+  - "echo '[Hook] 工具调用'"
+
+# 会话开始时触发的 Hooks
+session_start:
+  - "echo '[Hook] 会话开始: $(date +%Y-%m-%d %H:%M:%S)'"
+  - "echo '[Hook] 工作区: $(pwd)'"
+
+# 会话结束时触发的 Hooks
+session_end:
+  - "echo '[Hook] 会话结束: $(date +%Y-%m-%d %H:%M:%S)'"
+  - "echo '[Hook] 本次会话已记录'"
+
+# 自定义 Hooks 示例
+# daily_briefing:
+#   - "python ../system/generate_briefing.py"
+#   - "python ../system/telegram_bot.py send_briefing"

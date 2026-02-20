@@ -1,0 +1,8 @@
+name: briefing
+description: 生成每日简报
+version: 1.0.0
+enabled: true
+parameters: []
+examples:
+  - "/briefing"
+  - "/briefing date=today"

@@ -1,0 +1,6 @@
+description: 测试 Skill
+enabled: true
+examples: []
+name: test_skill
+parameters: []
+version: 1.0.0

@@ -1,0 +1,12 @@
+name: commit
+description: 智能生成 Git commit message
+version: 1.0.0
+enabled: true
+parameters:
+  - name: type
+    description: Commit 类型 (feat, fix, docs, etc.)
+    required: false
+examples:
+  - "/commit"
+  - "/commit feat=add-user-auth"
+  - "/commit type=fix message=修复登录bug"
