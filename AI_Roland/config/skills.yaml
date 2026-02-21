@@ -1,0 +1,104 @@
+skills:
+  notebooklm:
+    name: "NotebookLM 集成"
+    description: "将 NotebookLM 与本地 AI 结合，实现混合智能工作流"
+    version: "1.0.0"
+    enabled: true
+    module: "skills.notebooklm_integration"
+    class: "NotebookLMIntegration"
+    settings:
+      cache_dir: "cache/notebooklm"
+      timeout: 120
+    capabilities:
+      - name: "文档研究"
+        method: "research_documents"
+        description: "分析多个文档，综合 NotebookLM 和本地 AI 的分析结果"
+        parameters:
+          - name: "file_paths"
+            type: "array"
+            description: "文档路径列表"
+            required: true
+          - name: "research_questions"
+            type: "array"
+            description: "研究问题列表"
+            required: true
+
+      - name: "协作写作"
+        method: "collaborative_writing"
+        description: "NotebookLM 分析材料，本地 AI 生成大纲和内容"
+        parameters:
+          - name: "topic"
+            type: "string"
+            description: "写作主题"
+            required: true
+          - name: "source_files"
+            type: "array"
+            description: "源文件列表"
+            required: true
+          - name: "outline_request"
+            type: "string"
+            description: "大纲生成请求"
+            required: false
+
+      - name: "代码审查"
+        method: "code_review_workflow"
+        description: "分析代码仓库，提供深度审查报告"
+        parameters:
+          - name: "repo_path"
+            type: "string"
+            description: "代码仓库路径或 URL"
+            required: true
+          - name: "focus_areas"
+            type: "array"
+            description: "审查重点领域"
+            required: false
+
+      - name: "学习助手"
+        method: "learning_assistant"
+        description: "创建个性化学习计划和练习"
+        parameters:
+          - name: "subject"
+            type: "string"
+            description: "学习主题"
+            required: true
+          - name: "resources"
+            type: "array"
+            description: "学习资源列表"
+            required: true
+          - name: "learning_goals"
+            type: "array"
+            description: "学习目标列表"
+            required: true
+
+    examples:
+      - description: "研究多份文档"
+        code: |
+          from skills.notebooklm_integration import NotebookLMIntegration
+
+          integration = NotebookLMIntegration()
+          result = integration.research_documents(
+              file_paths=['paper1.pdf', 'paper2.pdf'],
+              research_questions=[
+                  '主要发现是什么？',
+                  '方法论的优缺点？',
+                  '有哪些实际应用？'
+              ]
+          )
+          # result['local_ai_prompt'] 包含本地 AI 分析提示
+
+      - description: "协作写作"
+        code: |
+          result = integration.collaborative_writing(
+              topic='量子计算的未来',
+              source_files=['research.pdf', 'article.docx'],
+              outline_request='生成包含技术细节的大纲'
+          )
+          # 使用 result['outline_prompt'] 让本地 AI 生成大纲
+
+      - description: "代码审查"
+        code: |
+          result = integration.code_review_workflow(
+              repo_path='https://github.com/user/project',
+              focus_areas=['安全性', '性能', '可测试性']
+          )
+          # 使用 result['notebooklm_analysis'] 和 result['review_prompt']
