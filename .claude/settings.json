@@ -1,0 +1,6 @@
+{
+  "startup_script": "startup.py",
+  "description": "AI Roland 自动启动配置",
+  "workspace": "D:\\ClaudeWork",
+  "ai_roland_path": "AI_Roland"
+}
