@@ -7,6 +7,7 @@ import subprocess
 import json
 import sys
 import os
+import time
 from pathlib import Path
 from datetime import datetime
 from typing import List, Dict, Optional
@@ -32,6 +33,25 @@ class SecondBrain:
         self.notebook_id = notebook_id or "6f279652"  # AI Roland 系统文档
         self.memory_dir = Path("D:/ClaudeWork/AI_Roland")
         self.query_history = []
+        self.health_status = None
+        self.fallback_mode = False
+
+    def check_connection(self) -> bool:
+        """
+        检查 NotebookLM 连接健康状态
+
+        Returns:
+            True if connection is healthy
+        """
+        result = self.run_notebooklm(['list'], timeout=30)
+        self.health_status = result['success']
+        self.fallback_mode = not result['success']
+
+        if not result['success']:
+            print(f"[警告] NotebookLM 连接失败，切换到降级模式")
+            print(f"[原因] {result.get('stderr', '未知错误')[:100]}")
+
+        return result['success']
 
     def run_notebooklm(self, args: List[str], timeout: int = 120) -> Dict:
         """运行 notebooklm 命令"""
@@ -52,17 +72,27 @@ class SecondBrain:
         except Exception as e:
             return {'success': False, 'error': str(e)}
 
-    def query(self, question: str, context: str = "") -> Optional[str]:
+    def query(self, question: str, context: str = "", retry: bool = True) -> Optional[str]:
         """
         向第二大脑提问
 
         Args:
             question: 问题
             context: 额外上下文
+            retry: 是否在失败时重试
 
         Returns:
             回答内容
         """
+        # 首次查询时检查连接
+        if self.health_status is None:
+            self.check_connection()
+
+        # 如果处于降级模式，尝试本地搜索
+        if self.fallback_mode:
+            print(f"[降级模式] 使用本地记忆搜索")
+            return self._local_fallback_search(question)
+
         # 使用当前 notebook
         full_question = f"{context}\n\n问题: {question}" if context else question
 
@@ -82,13 +112,67 @@ class SecondBrain:
                     'timestamp': datetime.now().isoformat(),
                     'question': question,
                     'context': context,
-                    'answer': answer[:500] + "..." if len(answer) > 500 else answer
+                    'answer': answer[:500] + "..." if len(answer) > 500 else answer,
+                    'source': 'notebooklm'
                 })
 
                 return answer
+            else:
+                print(f"[警告] 未找到回答格式")
+                return None
 
-        print(f"[错误] {result.get('stderr', '未知错误')}")
-        return None
+        # 连接失败，切换到降级模式
+        print(f"[错误] NotebookLM 连接失败")
+        if retry:
+            print(f"[重试] 检查连接状态...")
+            self.check_connection()
+            if not self.fallback_mode:
+                return self.query(question, context, retry=False)
+
+        self.fallback_mode = True
+        return self._local_fallback_search(question)
+
+    def _local_fallback_search(self, question: str) -> Optional[str]:
+        """
+        降级模式：使用本地记忆搜索
+
+        Args:
+            question: 问题
+
+        Returns:
+            搜索结果
+        """
+        print(f"[本地搜索] 搜索相关记忆...")
+
+        # 导入记忆搜索模块
+        try:
+            sys.path.insert(0, str(self.memory_dir / "system"))
+            from memory_search import MemorySearch
+
+            searcher = MemorySearch()
+            results = searcher.search(question, top_k=3)
+
+            if results:
+                response = f"[本地记忆搜索结果]\n\n"
+                for i, result in enumerate(results, 1):
+                    response += f"{i}. {result['title']} (相似度: {result['similarity']:.2f})\n"
+                    response += f"   {result['summary'][:150]}...\n\n"
+
+                # 记录查询历史
+                self.query_history.append({
+                    'timestamp': datetime.now().isoformat(),
+                    'question': question,
+                    'answer': response[:300],
+                    'source': 'local_fallback'
+                })
+
+                return response
+            else:
+                return "[本地搜索] 未找到相关记忆"
+
+        except Exception as e:
+            print(f"[错误] 本地搜索失败: {e}")
+            return None
 
     def search_memory(self, keywords: List[str]) -> List[str]:
         """
