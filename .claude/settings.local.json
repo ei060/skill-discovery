@@ -46,7 +46,8 @@
       "Bash(playwright:*)",
       "Bash(C:UsersDELLAppDataLocalProgramsPythonPython314python.exe -m notebooklm login)",
       "Bash(cmd:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(git init:*)"
     ]
   }
 }
