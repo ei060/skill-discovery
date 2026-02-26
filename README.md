@@ -1,241 +1,199 @@
 # 🔍 Skill Discovery
 
-> Automatically discover and track the latest AI skills, tools, and frameworks
+> 自动发现和追踪最新的 AI 技能、工具和框架
 
-**[🇨🇳 中文](README.md)** | **[🇺🇸 English](README_EN.md)** | **[🇯🇵 日本語](README_JA.md)**
+**[English](README_EN.md)** | **[日本語](README_JA.md)**
 
 ---
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Claude Code](https://img.shields.io/badge/Claude_Code-Skill-blue)](https://code.anthropic.com)
+[![Claude Code](https://img.shields.io/badge/Claude_Code-Skill-blue.svg)](https://code.anthropic.com)
 [![Python](https://img.shields.io/badge/Python-3.8+-green.svg)](https://www.python.org/)
 
-## 🎯 What is Skill Discovery?
+---
 
-**Skill Discovery** is an intelligent skill for Claude Code that **automatically discovers and recommends** the latest tools, frameworks, and libraries based on your needs. Unlike traditional search tools, it operates **proactively** - AI decides when to search without you explicitly asking.
+## 🎯 什么是 Skill Discovery？
 
-### Key Features
+**Skill Discovery** 是 Claude Code 的一个智能技能，能够**自动发现和推荐**最新的工具、框架和库。与传统的搜索工具不同，它是**主动式**的 - AI 会在你明确请求之前就决定何时搜索。
 
-✅ **Autonomous Detection** - AI automatically detects when you need external tools
-✅ **Multi-Source Search** - GitHub, Reddit, and Web simultaneously
-✅ **Smart Caching** - Two-level caching (memory + file) for instant results
-✅ **Intelligent Ranking** - Relevance scoring based on multiple factors
-✅ **6 Pre-configured Domains** - Browser automation, AI agents, Python, DevOps, APIs, Data
+### 核心特性
+
+✅ **自主检测** - AI 自动检测何时需要外部工具
+✅ **多源搜索** - 同时搜索 GitHub、Reddit 和 Web
+✅ **智能缓存** - 两级缓存（内存 + 文件）即时获取结果
+✅ **智能排序** - 基于多因素的相关性评分
+✅ **6 个预配置领域** - 浏览器自动化、AI 智能体、Python、DevOps、API、数据
 
 ---
 
-## 🚀 Why Use Skill Discovery?
+## 🚀 为什么使用 Skill Discovery？
 
-### Traditional Way
+### 传统方式
 ```
-You: "I need to automate browser actions"
+你: "我需要自动化浏览器操作"
  ↓
-You: Search Google for "browser automation tools"
+你: 搜索 "浏览器自动化工具"
  ↓
-You: Read 10+ articles comparing tools
+你: 阅读 10+ 篇对比文章
  ↓
-You: Choose based on limited knowledge
+你: 基于有限的知识选择
  ↓
-You: Might pick an outdated tool (Selenium vs Playwright)
+你: 可能选择了过时的工具（Selenium vs Playwright）
 ```
 
-### With Skill Discovery
+### 使用 Skill Discovery
 ```
-You: "I need to automate browser actions"
+你: "我需要自动化浏览器操作"
  ↓
-AI: [Automatically detects need]
+AI: [自动检测需求]
  ↓
-AI: [Searches GitHub, Reddit, Web]
+AI: [搜索 GitHub、Reddit、Web]
  ↓
-AI: Found Playwright is better than Selenium
+AI: 发现 Playwright 比 Selenium 更好
  ↓
-AI: "I'll use Playwright - it's faster and more modern"
+AI: "我会用 Playwright - 它更快更现代"
  ↓
-Done! You get the best tool without researching
+完成！无需研究，直接获得最佳工具
 ```
 
 ---
 
-## 📊 Supported Domains
+## 📊 支持的领域
 
-| Domain | Keywords | Sources | Cache TTL |
-|--------|----------|---------|-----------|
-| **Browser Automation** | puppeteer, playwright, selenium | GitHub, Reddit, Web | 12h |
-| **AI Agents** | openclaw, claude, llm, autonomous | GitHub, Reddit, Web | 6h |
-| **Python Scripts** | python, automation, scripting | GitHub, Reddit | 12h |
-| **API Integrations** | api, rest, graphql, webhook | GitHub, Web | 12h |
-| **DevOps Tools** | docker, kubernetes, cicd | GitHub, Reddit | 12h |
-| **Data Analysis** | pandas, jupyter, visualization | GitHub, Reddit | 12h |
+| 领域 | 关键词 | 数据源 | 缓存时间 |
+|------|--------|---------|----------|
+| **浏览器自动化** | puppeteer, playwright, selenium | GitHub, Reddit, Web | 12 小时 |
+| **AI 智能体** | openclaw, claude, llm, autonomous | GitHub, Reddit, Web | 6 小时 |
+| **Python 脚本** | python, automation, scripting | GitHub, Reddit | 12 小时 |
+| **API 集成** | api, rest, graphql, webhook | GitHub, Web | 12 小时 |
+| **DevOps 工具** | docker, kubernetes, cicd | GitHub, Reddit | 12 小时 |
+| **数据分析** | pandas, jupyter, visualization | GitHub, Reddit | 12 小时 |
 
 ---
 
-## 🛠️ Installation
+## 🛠️ 安装
 
-### Option 1: Install for Claude Code
+### 方法 1：安装为 Claude Code Skill
 
 ```bash
-# Clone to your Claude skills directory
-git clone https://github.com/YOUR_USERNAME/skill-discovery.git ~/.claude/skills/skill-discovery
+# 克隆到 Claude skills 目录
+git clone https://github.com/ei060/skill-discovery.git ~/.claude/skills/skill-discovery
 
-# Or on Windows
-git clone https://github.com/YOUR_USERNAME/skill-discovery.git %USERPROFILE%\.claude\skills\skill-discovery
+# Windows
+git clone https://github.com/ei060/skill-discovery.git %USERPROFILE%\.claude\skills\skill-discovery
 ```
 
-### Option 2: Install as Standalone
+### 方法 2：独立使用
 
 ```bash
-# Clone anywhere
-git clone https://github.com/YOUR_USERNAME/skill-discovery.git
+# 克隆到任何位置
+git clone https://github.com/ei060/skill-discovery.git
 cd skill-discovery
 
-# Install dependencies (optional, for scripts)
-pip install -r requirements.txt  # If available
+# 安装依赖（可选）
+pip install -r requirements.txt  # 如果有此文件
 ```
 
 ---
 
-## 💻 Usage
+## 💻 使用示例
 
-### Automatic Usage (Recommended)
+### 自动触发（推荐）
 
-**Simply talk to Claude normally:**
-
-```
-You: "I need to scrape websites"
-AI: [Skill Discovery activates automatically]
-AI: "I found Playwright is better than Selenium..."
-AI: [Uses Playwright for your task]
-
-You: "What's the best tool for data analysis?"
-AI: [Searches data-analysis domain]
-AI: "Here are the top options..."
-```
-
-### Manual Usage
+**只需与 Claude 正常对话：**
 
 ```
-You: "Search for latest DevOps tools"
-You: "What's new in AI agents?"
-You: "skill-discovery: find docker alternatives"
+你: "我需要自动化网站"
+AI: [Skill Discovery 自动激活]
+AI: "发现 Playwright 是最佳选择..."
+AI: [使用 Playwright 为你实现]
+```
+
+### 手动触发
+
+```
+你: "搜索最新的 DevOps 工具"
+你: "AI agents 领域有什么新东西？"
+你: "skill-discovery: 查找 docker 替代品"
 ```
 
 ---
 
-## 🎨 How It Works
-
-### Architecture
+## 🎨 工作原理
 
 ```
-User Input
+用户输入
     ↓
-1. Domain Detection
-   - Keywords: "automation", "deploy", "api"
-   - Context Analysis
+1. 领域检测
+   - 关键词："自动化"、"部署"、"api"
+   - 上下文分析
     ↓
-2. Cache Check
-   - Memory cache (fast)
-   - File cache (persistent)
-   - TTL check
+2. 缓存检查
+   - 内存缓存（快速）
+   - 文件缓存（持久）
+   - TTL 检查
     ↓
-3. Parallel Search
-   - GitHub API (repositories)
-   - Reddit API (community discussions)
-   - WebSearch (articles, tutorials)
+3. 并行搜索
+   - GitHub API（仓库）
+   - Reddit API（社区讨论）
+   - WebSearch（文章、教程）
     ↓
-4. Merge & Rank
-   - URL deduplication
-   - Relevance scoring
-   - Quality assessment
+4. 合并与排序
+   - URL 去重
+   - 相关性评分
+   - 质量评估
     ↓
-5. Update Cache
-   - Save results locally
-   - Index for quick search
+5. 更新缓存
     ↓
-6. Present Results
-   - Top recommendations
-   - Comparison with alternatives
-   - Learning resources
-```
-
-### Search Algorithms
-
-**GitHub Search:**
-```python
-query = "browser automation language:javascript OR python stars:>10 pushed:>2026-02-19"
-```
-
-**Reddit Search:**
-```python
-subreddits = ["Python", "automation", "webdev"]
-```
-
-**Scoring Formula:**
-```
-score = base_score + popularity_bonus + recency_bonus + relevance_match
+6. 展示结果
 ```
 
 ---
 
-## 📦 Project Structure
+## 📦 项目结构
 
 ```
 skill-discovery/
-├── SKILL.md              # Main skill definition
-├── README.md             # This file
-├── QUICK_REFERENCE.md    # Quick start guide
-├── DESIGN.md             # Design decisions
-├── COMPLETION_REPORT.md  # Development report
-├── USAGE_EXAMPLES.md     # Usage examples
+├── README.md              # 主文件（中文版）
+├── README_EN.md          # 英文版
+├── README_JA.md          # 日文版
+├── SKILL.md              # Skill 定义
+├── USAGE_GUIDE.md        # 详细使用指南
+├── DESIGN.md             # 设计文档
+├── QUICK_REFERENCE.md    # 快速参考
+├── COMPLETION_REPORT.md  # 完成报告
+├── USAGE_EXAMPLES.md     # 使用示例
 ├── config/
-│   ├── domains.json      # Domain configurations
-│   └── behavior.json     # Behavior settings
+│   ├── domains.json      # 领域配置
+│   └── behavior.json     # 行为配置
 ├── scripts/
-│   ├── search_github.py  # GitHub API wrapper
-│   ├── search_reddit.py  # Reddit API fetcher
-│   ├── merge_results.py  # Result merger
-│   └── update_cache.py   # Cache manager
+│   ├── search_github.py  # GitHub 搜索
+│   ├── search_reddit.py  # Reddit 抓取
+│   ├── merge_results.py  # 结果合并
+│   └── update_cache.py   # 缓存管理
 ├── references/
-│   ├── domains.md        # Domain documentation
-│   └── api_limits.md     # API rate limits
+│   ├── domains.md        # 领域文档
+│   └── api_limits.md     # API 限制
 └── cache/
-    └── index.json        # Global cache index
+    └── index.json        # 全局缓存索引
 ```
 
 ---
 
-## 🧪 Testing
+## ⚙️ 配置
 
-### Test GitHub Search
-```bash
-python scripts/search_github.py
-```
+### 添加新领域
 
-### Test Reddit Search
-```bash
-python scripts/search_reddit.py
-```
-
-### Test Cache Manager
-```bash
-python scripts/update_cache.py
-```
-
----
-
-## ⚙️ Configuration
-
-### Add New Domain
-
-Edit `config/domains.json`:
+编辑 `config/domains.json`：
 
 ```json
 {
   "id": "new-domain",
-  "name": "Display Name",
+  "name": "显示名称",
   "enabled": true,
-  "keywords": ["keyword1", "keyword2"],
-  "github_query": "search query",
-  "subreddits": ["relevant_subreddits"],
+  "keywords": ["关键词1", "关键词2"],
+  "github_query": "GitHub 搜索查询",
+  "subreddits": ["相关子版块"],
   "sources": ["github", "reddit", "web"],
   "schedule": "weekly",
   "cache_ttl": 43200000,
@@ -243,9 +201,9 @@ Edit `config/domains.json`:
 }
 ```
 
-### Adjust Behavior
+### 调整行为
 
-Edit `config/behavior.json`:
+编辑 `config/behavior.json`：
 
 ```json
 {
@@ -259,63 +217,70 @@ Edit `config/behavior.json`:
 
 ---
 
-## 📈 Performance
+## 🧪 测试
 
-### Cache Efficiency
+```bash
+# 测试 GitHub 搜索
+python scripts/search_github.py
 
-- **Memory Cache**: < 1ms retrieval
-- **File Cache**: < 10ms retrieval
-- **Fresh Search**: 2-5 seconds
+# 测试 Reddit 搜索
+python scripts/search_reddit.py
 
-### Rate Limits
-
-- **GitHub API**: 60 requests/hour (unauthenticated)
-- **Reddit API**: ~30 requests/minute
-- **WebSearch**: Unlimited (managed by Claude)
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+# 测试缓存管理
+python scripts/update_cache.py
+```
 
 ---
 
-## 📝 License
+## 📈 性能
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
-
-- Built for [Claude Code](https://code.anthropic.com/)
-- Inspired by [OpenClaw](https://github.com/openclaw/openclaw) skills ecosystem
-- Powered by GitHub, Reddit, and Web Search APIs
+- **内存缓存**: < 1ms 检索
+- **文件缓存**: < 10ms 检索
+- **新鲜搜索**: 2-5 秒
 
 ---
 
-## 📮 Contact
+## 🤝 贡献
 
-- **Issues**: [GitHub Issues](https://github.com/YOUR_USERNAME/skill-discovery/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/YOUR_USERNAME/skill-discovery/discussions)
+欢迎贡献！请：
+
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b feature/amazing-feature`)
+3. 提交更改 (`git commit -m 'Add amazing feature'`)
+4. 推送到分支 (`git push origin feature/amazing-feature`)
+5. 开启 Pull Request
 
 ---
 
-## 🌟 Star History
+## 📝 许可证
 
-If you find this skill helpful, please consider giving it a ⭐ star on GitHub!
+本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
+
+---
+
+## 🙋 致谢
+
+- 为 [Claude Code](https://code.anthropic.com/) 构建
+- 灵感来自 [OpenClaw](https://github.com/openclaw/openclaw) skills 生态
+- 使用 GitHub、Reddit、Web Search APIs
+
+---
+
+## 📮 联系方式
+
+- **Issues**: [GitHub Issues](https://github.com/ei060/skill-discovery/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/ei060/skill-discovery/discussions)
+
+---
+
+## 🌟 给 Star 吗
+
+如果你觉得这个项目有帮助，请给它一个 ⭐ star！
 
 ---
 
 <div align="center">
 
-**Made with ❤️ by the AI community**
+**让 AI 帮你发现和选择最佳工具**
 
 </div>
