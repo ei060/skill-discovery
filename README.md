@@ -2,6 +2,10 @@
 
 > Automatically discover and track the latest AI skills, tools, and frameworks
 
+**[🇨🇳 中文](README.md)** | **[🇺🇸 English](README_EN.md)** | **[🇯🇵 日本語](README_JA.md)**
+
+---
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-Skill-blue)](https://code.anthropic.com)
 [![Python](https://img.shields.io/badge/Python-3.8+-green.svg)](https://www.python.org/)
