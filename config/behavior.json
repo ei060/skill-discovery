@@ -1,0 +1,19 @@
+{
+  "auto_discovery": true,
+  "auto_use_skills": true,
+  "ask_before_using": false,
+  "show_what_i_used": true,
+  "max_results_per_source": 20,
+  "min_relevance_score": 0.3,
+  "cache_enabled": true,
+  "memory_cache_ttl": 3600000,
+  "file_cache_ttl": 86400000,
+  "max_cache_items_per_domain": 100,
+  "fallback_to_websearch": true,
+  "log_discovery_history": true,
+  "priority": {
+    "github": 1.0,
+    "reddit": 0.8,
+    "web": 0.6
+  }
+}

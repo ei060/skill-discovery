@@ -1,0 +1,128 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-02-26T12:00:00Z",
+  "domains": [
+    {
+      "id": "browser-automation",
+      "name": "浏览器自动化",
+      "enabled": true,
+      "keywords": [
+        "puppeteer",
+        "playwright",
+        "selenium",
+        "浏览器",
+        "爬虫",
+        "scraping",
+        "browser control",
+        "headless",
+        "automation"
+      ],
+      "github_query": "browser automation language:javascript OR python OR typescript stars:>10",
+      "subreddits": ["Python", "automation", "webdev", "javascript"],
+      "sources": ["github", "reddit", "web"],
+      "schedule": "weekly",
+      "cache_ttl": 43200000,
+      "priority": 1
+    },
+    {
+      "id": "ai-agents",
+      "name": "AI 智能体",
+      "enabled": true,
+      "keywords": [
+        "openclaw",
+        "claude",
+        "ai agent",
+        "chatbot",
+        "智能体",
+        "autonomous",
+        "llm",
+        "gpt",
+        "anthropic"
+      ],
+      "github_query": "AI agent OR autonomous OR chatbot stars:>20",
+      "subreddits": ["OpenAI", "ArtificialIntelligence", "MachineLearning"],
+      "sources": ["github", "reddit", "web"],
+      "schedule": "daily",
+      "cache_ttl": 21600000,
+      "priority": 0
+    },
+    {
+      "id": "python-scripts",
+      "name": "Python 脚本工具",
+      "enabled": true,
+      "keywords": [
+        "python",
+        "脚本",
+        "py",
+        "自动化",
+        "python script",
+        "automation"
+      ],
+      "github_query": "python script OR automation stars:>5 language:python",
+      "subreddits": ["Python", "learnprogramming", "PythonProjects"],
+      "sources": ["github", "reddit"],
+      "schedule": "weekly",
+      "cache_ttl": 43200000,
+      "priority": 2
+    },
+    {
+      "id": "api-integrations",
+      "name": "API 集成",
+      "enabled": true,
+      "keywords": [
+        "api",
+        "rest",
+        "graphql",
+        "webhook",
+        "integration",
+        "api integration"
+      ],
+      "github_query": "API OR REST OR GraphQL integration stars:>10",
+      "subreddits": ["webdev", "API", "devops"],
+      "sources": ["github", "web"],
+      "schedule": "weekly",
+      "cache_ttl": 43200000,
+      "priority": 3
+    },
+    {
+      "id": "devops-tools",
+      "name": "DevOps 工具",
+      "enabled": true,
+      "keywords": [
+        "docker",
+        "kubernetes",
+        "ci/cd",
+        "部署",
+        "deploy",
+        "devops",
+        "infrastructure"
+      ],
+      "github_query": "docker OR kubernetes OR cicd stars:>20",
+      "subreddits": ["devops", "Docker", "kubernetes"],
+      "sources": ["github", "reddit"],
+      "schedule": "weekly",
+      "cache_ttl": 43200000,
+      "priority": 4
+    },
+    {
+      "id": "data-analysis",
+      "name": "数据分析工具",
+      "enabled": true,
+      "keywords": [
+        "数据分析",
+        "pandas",
+        "jupyter",
+        "visualization",
+        "图表",
+        "data analysis",
+        "analytics"
+      ],
+      "github_query": "pandas OR jupyter OR data analysis stars:>10 language:python",
+      "subreddits": ["datascience", "Python", "learnmachinelearning"],
+      "sources": ["github", "reddit"],
+      "schedule": "weekly",
+      "cache_ttl": 43200000,
+      "priority": 5
+    }
+  ]
+}
