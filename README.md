@@ -1,5 +1,10 @@
 # Skill Discovery
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Claude Code](https://img.shields.io/badge/Claude_Code-Skill-blue)](https://claude.ai/code)
+[![Security](https://img.shields.io/badge/Security-Audit-green)](SECURITY.md)
+[![GitHub release](https://img.shields.io/github/v/release/ei060/skill-discovery)](https://github.com/ei060/skill-discovery/releases)
+
 > **Automatically discover and track the latest AI skills, tools, and automation frameworks**
 > **自动发现和跟踪最新的AI技能、工具和自动化框架**
 
