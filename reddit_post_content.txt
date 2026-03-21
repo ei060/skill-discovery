@@ -1,0 +1,27 @@
+标题：
+[Release] Skill Discovery - Auto Tool Discovery + Security Audit Framework
+
+内容：
+I just released Skill Discovery, a tool that helps Claude automatically discover tools with a complete security audit system!
+
+What it does:
+- Automatically detects when you need tools
+- Searches GitHub, Reddit, Web
+- Returns ranked results
+- 5 domains supported
+
+Why it matters:
+This is the FIRST security framework for Claude Code Skills, based on OpenClaw security research.
+
+Features:
+- SECURITY.md with complete guide (1,086 lines)
+- SKILL_AUDIT_CHECKLIST.md for 5-phase audits (834 lines)
+- Prevents API key theft from malicious skills
+
+Quick security check:
+grep -r "os.getenv" <skill-dir> && echo "REJECT"
+
+GitHub: https://github.com/ei060/skill-discovery
+Release: https://github.com/ei060/skill-discovery/releases/tag/v1.0.0
+
+Open source, contributions welcome!

@@ -1,0 +1,67 @@
+YouTube视频分析报告
+====================
+
+视频URL: https://www.youtube.com/watch?v=HO4JDWcAw_g
+视频ID: HO4JDWcAw_g
+
+基本信息：
+--------
+标题: 小心你的私密信息被偷走！OpenClaw Skill 安装教程与安全指南
+作者: AI零距离
+作者频道: https://www.youtube.com/@ai-skill-everyone
+视频类型: video
+
+额外信息：
+--------
+时长: 无法获取（YouTube阻止了来自当前IP的请求）
+观看次数: 无法获取（YouTube阻止了来自当前IP的请求）
+发布日期: 无法获取（YouTube阻止了来自当前IP的请求）
+
+缩略图: https://i.ytimg.com/vi/HO4JDWcAw_g/hqdefault.jpg
+尺寸: 200x113
+
+字幕内容：
+--------------------
+【字幕获取失败】
+由于YouTube阻止了来自当前IP地址的请求，无法获取视频字幕。
+
+可能的原因：
+- YouTube检测到自动化请求并进行了封锁
+- 当前IP地址可能属于云服务商，被YouTube限制访问
+- 请求频率过高触发YouTube的反爬虫机制
+
+尝试过的方法：
+1. yt-dlp（需要身份验证）
+2. youtube-transcript-api（IP被封锁）
+3. Invidious API实例（全部不可用）
+4. YouTube noembed API（成功，但仅提供基本信息）
+
+技术说明：
+--------
+- noembed API是YouTube提供的公开API，专门用于嵌入式播放器
+- 该API不提供完整的视频元数据和字幕信息
+- 要获取完整的视频信息、字幕等，需要：
+  1. 使用有效的YouTube账号cookies进行身份验证
+  2. 使用代理服务器隐藏真实IP
+  3. 遵守YouTube的使用条款和API限制
+
+总结：
+----
+这是一个关于OpenClaw Skill安装教程与安全指南的视频，由"AI零距离"频道发布。
+
+从标题可以看出，视频的主要内容可能包括：
+1. OpenClaw Skill的安装步骤和教程
+2. 如何保护私密信息不被泄露
+3. 使用OpenClaw Skill时的安全注意事项和最佳实践
+
+由于技术限制（YouTube的反爬虫机制），无法获取更详细的信息，如视频时长、观看次数、发布日期和字幕内容。
+
+建议：
+如需获取完整信息，可以：
+1. 手动访问YouTube视频页面查看
+2. 使用已登录的浏览器导出cookies给yt-dlp使用
+3. 使用代理服务来规避IP封锁
+
+====================
+报告生成时间: 2026-02-27
+生成工具: yt-dlp, youtube-transcript-api, YouTube noembed API

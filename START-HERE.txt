@@ -1,0 +1,86 @@
+=============================================================
+  Browser Control Skill - Simple Installation Guide
+=============================================================
+
+IF YOU SEE GARBLED TEXT:
+------------------------
+Use the manual commands below - this always works!
+
+=============================================================
+METHOD 1: AUTOMATIC (Recommended)
+=============================================================
+
+Double-click: INSTALL.bat
+
+Wait 3-5 minutes, then test:
+  cd %USERPROFILE%\AI_Roland\system\skills\browser-control
+  node test-12306-local.js
+
+=============================================================
+METHOD 2: POWERShell VERSION
+=============================================================
+
+Right-click: install.ps1
+Select: "Run with PowerShell"
+
+=============================================================
+METHOD 3: MANUAL (100% works, no encoding issues)
+=============================================================
+
+Open Command Prompt (cmd) and run these commands:
+
+Step 1: Check Node.js
+  node --version
+
+Step 2: Create directory
+  mkdir %USERPROFILE%\AI_Roland\system\skills\browser-control
+  cd %USERPROFILE%\AI_Roland\system\skills\browser-control
+
+Step 3: Copy files (if source exists)
+  copy D:\ClaudeWork\AI_Roland\system\skills\browser-control\*.js .
+
+Step 4: Install Playwright
+  npm install playwright
+
+Step 5: Install Chromium
+  npx playwright install chromium
+
+Step 6: Test
+  node test-12306-local.js
+
+=============================================================
+EXPECTED RESULT
+=============================================================
+
+After installation, running test-12306-local.js will:
+- Open browser window automatically
+- Visit 12306 website
+- Save screenshot to C:\Users\Public\12306-demo.png
+
+=============================================================
+TROUBLESHOOTING
+=============================================================
+
+Problem: Installation fails
+Solution:
+  1. Make sure Node.js is installed (https://nodejs.org/)
+  2. Run as Administrator
+  3. Check internet connection
+
+Problem: Browser won't launch
+Solution:
+  npx playwright install chromium --force
+
+Problem: Need more help
+Read: Troubleshooting.md
+
+=============================================================
+FILE SIZES
+=============================================================
+
+Playwright:    ~1-2 MB
+Chromium:      ~167 MB
+Total:         ~170 MB
+Disk needed:   500 MB minimum, 1 GB recommended
+
+=============================================================

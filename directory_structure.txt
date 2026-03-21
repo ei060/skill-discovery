@@ -1,0 +1,56 @@
+ClaudeWork/
+│
+├── .claude/                          # Claude Code 配置
+│   ├── skills/                       # 技能目录
+│   │   ├── ai-roland-secretary/
+│   │   ├── ask-search/
+│   │   ├── claude-to-im/
+│   │   ├── network-scraping/
+│   │   ├── short-drama-script/
+│   │   └── skill-discovery/
+│   ├── session-end.py                # 会话结束脚本
+│   ├── session-start.py              # 会话开始脚本
+│   └── skills_dist/                  # 技能分发目录
+│
+├── AI_Roland/                        # AI Roland 系统
+│   ├── system/                       # 系统核心
+│   │   ├── agents/                   # Agent 系统
+│   │   ├── hooks/                    # Hook 系统
+│   │   ├── skills/                   # 技能目录
+│   │   ├── browser_controller.py     # 浏览器控制器
+│   │   ├── daemon.py                 # 守护进程
+│   │   ├── engine.py                 # 核心引擎
+│   │   └── ...                       # 其他系统文件
+│   ├── 记忆库/                        # 记忆存储
+│   ├── 技能库/                        # 技能存储
+│   ├── 记录库/                        # 记录存储
+│   ├── 日记/                         # 日记目录
+│   └── 日志/                         # 日志目录
+│
+├── docs/                             # 文档目录（新增）
+│   └── images/                       # 文档图片
+│       ├── AI_Roland_Directory_Structure.png
+│       └── AI_Roland_System_Flowchart.png
+│
+├── .gitignore                        # Git 忽略规则（已更新）
+│
+├── 配置和文档文件
+│   ├── AGENT_RULES.md                # Agent 执行规则
+│   ├── QUICK_REFERENCE.md            # 快速参考
+│   ├── USAGE_GUIDE.md                # 使用指南
+│   ├── README-Installation.md        # 安装说明
+│   ├── 6551_mcp_config_template.json # MCP 配置模板
+│   └── skills-lock.json              # 技能依赖锁文件
+│
+├── 清理报告（新增）
+│   ├── untracked_files_classification_report.md
+│   ├── untracked_files_next_steps.md
+│   ├── json_cleanup_report.md
+│   ├── images_cleanup_report.md
+│   └── scripts_cleanup_report.md
+│
+└── 临时文件和测试脚本（已忽略）
+    ├── test_*.py                     # 测试脚本
+    ├── fix_*.py                      # 修复脚本
+    ├── *_screenshot.png              # 调试截图
+    └── ...                           # 其他临时文件

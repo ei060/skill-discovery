@@ -1,0 +1,49 @@
+标题: 无法获取标题
+频道: 未知
+观看: 未知
+发布: 未知
+
+描述:
+OpenClaw 爆火半个月狂揽 20 万 Star！但你装的 Skill 可能正在偷偷窃取你的 API Key、隐私信息！
+
+📌 视频精华章节 (Timestamps)
+0:00 引言
+0:55 OpenClaw Skill 是什么
+1:53 skill 的查找、安装和使用
+3:12 目录加载规则
+4:01 配置环境变量
+5:47 隐私泄露和安全
+
+本期视频不仅会手把手教你
+✅ OpenClaw Skill 是什么
+✅ Skill 安装、加载规则、目录结构全解析
+✅ 无需 API Key 的天气 Skill 实操
+✅ Tavily 联网搜索 Skill 配置教程✅ 最关键：OpenClaw 安全审计与防窃密指南
+
+不想让你的 API Key 裸奔？赶紧点开视频学习如何安全地武装你的 AI Agent！
+
+#OpenClaw #skills  #agent  #教程 #智能体 #audit #security
+Chapters
+View all
+引言
+0:00
+OpenClaw Skill 是什么
+0:55
+skill 的查找、安装和使用
+1:53
+目录加载规则
+3:12
+配置环境变量
+4:01
+隐私泄露和安全
+5:47
+Transcript
+
+Follow along using the transcript.
+
+Show transcript
+AI零距离
+323 subscribers
+Videos
+About
+Show less
