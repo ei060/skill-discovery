@@ -1,0 +1,61 @@
+ClaudeWork/
+│
+├── .claude/                          # Claude Code 配置和技能
+│   ├── skills/                       # 技能目录
+│   ├── session-end.py                # 会话结束脚本
+│   ├── session-start.py              # 会话开始脚本
+│   └── skills_dist/                  # 技能分发目录
+│
+├── AI_Roland/                        # AI Roland 智能系统
+│   ├── system/                       # 系统核心
+│   │   ├── agents/                   # Agent 协作系统（22个文件）
+│   │   ├── hooks/                    # Hook 系统（2个文件）
+│   │   ├── skills/                   # 技能目录
+│   │   ├── browser_controller.py     # 浏览器控制器
+│   │   ├── daemon.py                 # 守护进程
+│   │   └── engine.py                 # 核心引擎
+│   ├── 记忆库/                        # 长期记忆存储
+│   ├── 技能库/                        # 技能知识库
+│   ├── 记录库/                        # 运行记录
+│   ├── 日记/                         # 系统日记
+│   └── 日志/                         # 运行日志
+│
+├── docs/                             # 项目文档（新增）
+│   └── images/                       # 文档图片（174 KB）
+│       ├── AI_Roland_Directory_Structure.png
+│       └── AI_Roland_System_Flowchart.png
+│
+├── AI_Roland_RolandSkills/           # 技能子模块
+│
+├── AI_Workspace/                     # AI 工作区
+│
+├── .gitignore                        # Git 忽略规则（已更新）
+│
+├── 配置文件
+│   ├── AGENT_RULES.md                # Agent 执行规则
+│   ├── 6551_mcp_config_template.json # MCP 配置模板
+│   └── skills-lock.json              # 技能依赖锁文件
+│
+├── 文档文件
+│   ├── QUICK_REFERENCE.md            # 快速参考
+│   ├── USAGE_GUIDE.md                # 使用指南
+│   └── README-Installation.md        # 安装说明
+│
+├── 清理报告
+│   ├── DIRECTORY_STRUCTURE.md        # 目录结构（本文件）
+│   ├── workspace_summary.md          # 工作区总结
+│   ├── json_cleanup_report.md        # JSON 清理报告
+│   ├── images_cleanup_report.md      # 图片清理报告
+│   └── scripts_cleanup_report.md     # 脚本清理报告
+│
+└── 临时文件（已忽略）
+    ├── test_*.py                     # 测试脚本（137个）
+    ├── fix_*.py                      # 修复脚本
+    ├── *_screenshot.png              # 调试截图（18个）
+    └── ...                           # 其他临时文件
+
+统计：
+- 未跟踪文件总数：449 个（从738减少39%）
+- JSON 文件：2 个（从36减少94%）
+- 图片文件：0 个（从18减少100%）
+- Python 脚本：55 个（从192减少71%）
