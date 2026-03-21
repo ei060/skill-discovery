@@ -1,0 +1,393 @@
+{
+  "architect": {
+    "agent_name": "architect",
+    "agent_type": "design",
+    "expertise": [
+      "system_architecture",
+      "microservices",
+      "api_design",
+      "database_design",
+      "scalability",
+      "design_patterns"
+    ],
+    "capabilities": [
+      "architecture_review",
+      "tech_stack_selection",
+      "system_design",
+      "component_design",
+      "api_design",
+      "data_modeling"
+    ],
+    "skill_level": 90,
+    "availability": 1.0,
+    "current_load": 0,
+    "max_capacity": 10,
+    "tasks_completed": 0,
+    "avg_response_time": 0.0,
+    "success_rate": 1.0,
+    "last_updated": "2026-03-17T15:30:58.097679+00:00"
+  },
+  "planner": {
+    "agent_name": "planner",
+    "agent_type": "planning",
+    "expertise": [
+      "project_planning",
+      "task_breakdown",
+      "risk_assessment",
+      "dependency_analysis",
+      "resource_planning"
+    ],
+    "capabilities": [
+      "create_plan",
+      "estimate_effort",
+      "identify_risks",
+      "define_milestones",
+      "task_prioritization"
+    ],
+    "skill_level": 88,
+    "availability": 1.0,
+    "current_load": 0,
+    "max_capacity": 10,
+    "tasks_completed": 0,
+    "avg_response_time": 0.0,
+    "success_rate": 1.0,
+    "last_updated": "2026-03-17T15:30:58.098729+00:00"
+  },
+  "code_reviewer": {
+    "agent_name": "code_reviewer",
+    "agent_type": "review",
+    "expertise": [
+      "code_quality",
+      "best_practices",
+      "clean_code",
+      "refactoring",
+      "design_patterns"
+    ],
+    "capabilities": [
+      "code_review",
+      "quality_assessment",
+      "bug_detection",
+      "performance_review",
+      "maintainability_check"
+    ],
+    "skill_level": 85,
+    "availability": 1.0,
+    "current_load": 0,
+    "max_capacity": 10,
+    "tasks_completed": 0,
+    "avg_response_time": 0.0,
+    "success_rate": 1.0,
+    "last_updated": "2026-03-17T15:30:58.099636+00:00"
+  },
+  "security_reviewer": {
+    "agent_name": "security_reviewer",
+    "agent_type": "security",
+    "expertise": [
+      "owasp_top10",
+      "sql_injection",
+      "xss_prevention",
+      "authentication",
+      "authorization",
+      "cryptography"
+    ],
+    "capabilities": [
+      "security_audit",
+      "vulnerability_scan",
+      "penetration_testing",
+      "security_review",
+      "compliance_check"
+    ],
+    "skill_level": 92,
+    "availability": 1.0,
+    "current_load": 0,
+    "max_capacity": 10,
+    "tasks_completed": 0,
+    "avg_response_time": 0.0,
+    "success_rate": 1.0,
+    "last_updated": "2026-03-17T15:30:58.100574+00:00"
+  },
+  "doc_writer": {
+    "agent_name": "doc_writer",
+    "agent_type": "documentation",
+    "expertise": [
+      "technical_writing",
+      "api_docs",
+      "user_guides",
+      "readme",
+      "architecture_docs"
+    ],
+    "capabilities": [
+      "write_docs",
+      "review_docs",
+      "doc_structure",
+      "api_documentation",
+      "tutorials"
+    ],
+    "skill_level": 82,
+    "availability": 1.0,
+    "current_load": 0,
+    "max_capacity": 10,
+    "tasks_completed": 0,
+    "avg_response_time": 0.0,
+    "success_rate": 1.0,
+    "last_updated": "2026-03-17T15:30:58.101868+00:00"
+  },
+  "engineer": {
+    "agent_name": "engineer",
+    "agent_type": "implementation",
+    "expertise": [
+      "programming",
+      "debugging",
+      "testing",
+      "optimization",
+      "deployment"
+    ],
+    "capabilities": [
+      "implement_feature",
+      "fix_bug",
+      "optimize_code",
+      "write_tests",
+      "code_refactoring"
+    ],
+    "skill_level": 87,
+    "availability": 1.0,
+    "current_load": 0,
+    "max_capacity": 10,
+    "tasks_completed": 0,
+    "avg_response_time": 0.0,
+    "success_rate": 1.0,
+    "last_updated": "2026-03-17T15:30:58.103034+00:00"
+  },
+  "python_reviewer": {
+    "agent_name": "python_reviewer",
+    "agent_type": "language_reviewer",
+    "expertise": [
+      "python",
+      "django",
+      "flask",
+      "asyncio",
+      "type_hints",
+      "pep8",
+      "pytest"
+    ],
+    "capabilities": [
+      "python_review",
+      "django_review",
+      "flask_review",
+      "async_review",
+      "type_check",
+      "pep8_check"
+    ],
+    "skill_level": 85,
+    "availability": 1.0,
+    "current_load": 0,
+    "max_capacity": 10,
+    "tasks_completed": 0,
+    "avg_response_time": 0.0,
+    "success_rate": 1.0,
+    "last_updated": "2026-03-17T15:30:58.104283+00:00"
+  },
+  "database_reviewer": {
+    "agent_name": "database_reviewer",
+    "agent_type": "specialist",
+    "expertise": [
+      "sql",
+      "postgresql",
+      "mysql",
+      "mongodb",
+      "query_optimization",
+      "indexing",
+      "schema_design"
+    ],
+    "capabilities": [
+      "query_review",
+      "index_optimization",
+      "schema_review",
+      "performance_tuning",
+      "migration_plan"
+    ],
+    "skill_level": 90,
+    "availability": 1.0,
+    "current_load": 0,
+    "max_capacity": 10,
+    "tasks_completed": 0,
+    "avg_response_time": 0.0,
+    "success_rate": 1.0,
+    "last_updated": "2026-03-17T15:30:58.107582+00:00"
+  },
+  "tdd_guide": {
+    "agent_name": "tdd_guide",
+    "agent_type": "testing",
+    "expertise": [
+      "tdd",
+      "unit_testing",
+      "test_design",
+      "red_green_refactor",
+      "coverage"
+    ],
+    "capabilities": [
+      "tdd_guidance",
+      "test_design",
+      "coverage_analysis",
+      "test_refactoring",
+      "testing_strategy"
+    ],
+    "skill_level": 80,
+    "availability": 1.0,
+    "current_load": 0,
+    "max_capacity": 10,
+    "tasks_completed": 0,
+    "avg_response_time": 0.0,
+    "success_rate": 1.0,
+    "last_updated": "2026-03-17T15:30:58.110300+00:00"
+  },
+  "e2e_runner": {
+    "agent_name": "e2e_runner",
+    "agent_type": "testing",
+    "expertise": [
+      "playwright",
+      "selenium",
+      "cypress",
+      "page_object",
+      "test_automation",
+      "browser_testing"
+    ],
+    "capabilities": [
+      "e2e_test_design",
+      "test_automation",
+      "page_object_model",
+      "test_stability",
+      "browser_automation"
+    ],
+    "skill_level": 78,
+    "availability": 1.0,
+    "current_load": 0,
+    "max_capacity": 10,
+    "tasks_completed": 0,
+    "avg_response_time": 0.0,
+    "success_rate": 1.0,
+    "last_updated": "2026-03-17T15:30:58.111414+00:00"
+  },
+  "verification_before_completion": {
+    "agent_name": "verification_before_completion",
+    "agent_type": "quality",
+    "expertise": [
+      "quality_assurance",
+      "checklist",
+      "verification",
+      "security_check",
+      "performance_check"
+    ],
+    "capabilities": [
+      "pre_completion_check",
+      "security_verification",
+      "performance_check",
+      "documentation_check"
+    ],
+    "skill_level": 83,
+    "availability": 1.0,
+    "current_load": 0,
+    "max_capacity": 10,
+    "tasks_completed": 0,
+    "avg_response_time": 0.0,
+    "success_rate": 1.0,
+    "last_updated": "2026-03-17T15:30:58.119458+00:00"
+  },
+  "go_reviewer": {
+    "agent_name": "go_reviewer",
+    "agent_type": "language_reviewer",
+    "expertise": [
+      "go",
+      "golang",
+      "goroutines",
+      "channels",
+      "context",
+      "error_handling",
+      "interfaces"
+    ],
+    "capabilities": [
+      "go_review",
+      "concurrency_review",
+      "error_handling_check",
+      "interface_design",
+      "goroutine_leak_detection"
+    ],
+    "skill_level": 82,
+    "availability": 1.0,
+    "current_load": 0,
+    "max_capacity": 10,
+    "tasks_completed": 0,
+    "avg_response_time": 0.0,
+    "success_rate": 1.0,
+    "last_updated": "2026-03-17T15:30:58.123376+00:00"
+  },
+  "kotlin_reviewer": {
+    "agent_name": "kotlin_reviewer",
+    "agent_type": "language_reviewer",
+    "expertise": [
+      "kotlin",
+      "android",
+      "coroutines",
+      "null_safety",
+      "jetpack_compose"
+    ],
+    "capabilities": [
+      "kotlin_review",
+      "android_review",
+      "coroutine_review",
+      "null_safety_check",
+      "compose_review"
+    ],
+    "skill_level": 75,
+    "availability": 1.0,
+    "current_load": 0,
+    "max_capacity": 10,
+    "tasks_completed": 0,
+    "avg_response_time": 0.0,
+    "success_rate": 1.0,
+    "last_updated": "2026-03-17T15:30:58.125934+00:00"
+  },
+  "refactor_cleaner": {
+    "agent_name": "refactor_cleaner",
+    "agent_type": "quality",
+    "expertise": [
+      "refactoring",
+      "dead_code",
+      "code_cleanup",
+      "knip",
+      "dependency_analysis"
+    ],
+    "capabilities": [
+      "dead_code_detection",
+      "refactor_plan",
+      "dependency_cleanup",
+      "code_simplification"
+    ],
+    "skill_level": 76,
+    "availability": 1.0,
+    "current_load": 0,
+    "max_capacity": 10,
+    "tasks_completed": 0,
+    "avg_response_time": 0.0,
+    "success_rate": 1.0,
+    "last_updated": "2026-03-17T15:30:58.127668+00:00"
+  },
+  "test_agent": {
+    "agent_name": "test_agent",
+    "agent_type": "test",
+    "expertise": [
+      "testing"
+    ],
+    "capabilities": [
+      "test_execution"
+    ],
+    "skill_level": 80,
+    "availability": 1.0,
+    "current_load": 0,
+    "max_capacity": 10,
+    "tasks_completed": 0,
+    "avg_response_time": 0.0,
+    "success_rate": 1.0,
+    "last_updated": "2026-03-17T16:21:56.322339+00:00"
+  }
+}
