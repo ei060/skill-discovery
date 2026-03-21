@@ -9,6 +9,66 @@ from datetime import datetime, timedelta
 from pathlib import Path
 import json
 
+# 📋 导入任务状态管理器 (TodoWrite 持久化)
+from task_state_manager import get_task_manager
+
+
+class TodoWriteManager:
+    """TodoWrite 任务列表管理器"""
+
+    def __init__(self):
+        self.task_manager = get_task_manager()
+
+    def update_todos(self, todos: list) -> bool:
+        """
+        更新 TodoWrite 任务列表
+
+        Args:
+            todos: 任务列表，格式为 Claude Code TaskList 输出
+
+        Returns:
+            是否保存成功
+        """
+        return self.task_manager.save_todos(todos)
+
+    def get_todos(self) -> list:
+        """
+        获取保存的 TodoWrite 任务列表
+
+        Returns:
+            任务列表
+        """
+        return self.task_manager.load_todos()
+
+    def get_todos_render(self) -> str:
+        """
+        获取 TodoWrite 任务列表的渲染文本
+
+        Returns:
+            格式化的任务列表文本
+        """
+        todos = self.get_todos()
+        if not todos:
+            return "当前无待办任务"
+
+        lines = ["## 待办任务列表\n"]
+        for todo in todos:
+            status_emoji = {
+                "pending": "⏳",
+                "in_progress": "🔄",
+                "completed": "✅"
+            }.get(todo.get("status", "pending"), "⏳")
+
+            lines.append(f"{status_emoji} **{todo.get('subject', '未知任务')}**")
+            if todo.get("description"):
+                lines.append(f"   {todo['description']}")
+            if todo.get("status") == "in_progress" and todo.get("activeForm"):
+                lines.append(f"   正在: {todo['activeForm']}")
+            lines.append("")
+
+        return "\n".join(lines)
+
+
 class RolandEngine:
     """AI Roland 核心引擎"""
 
@@ -33,6 +93,7 @@ class RolandEngine:
         self.memory_manager = MemoryManager(self)
         self.task_manager = TaskManager(self)
         self.scheduler = Scheduler(self)
+        self.todo_manager = TodoWriteManager()  # 📋 TodoWrite 管理器
 
         # 加载系统状态
         self.load_state()
@@ -58,6 +119,38 @@ class RolandEngine:
         state_file = self.workspace / "system_state.json"
         with open(state_file, 'w', encoding='utf-8') as f:
             json.dump(self.state, f, ensure_ascii=False, indent=2)
+
+    # 📋 TodoWrite 任务列表相关方法
+
+    def update_todos(self, todos: list) -> bool:
+        """
+        更新 TodoWrite 任务列表（持久化）
+
+        Args:
+            todos: 任务列表，格式为 Claude Code TaskList 输出
+
+        Returns:
+            是否保存成功
+        """
+        return self.todo_manager.update_todos(todos)
+
+    def get_todos_render(self) -> str:
+        """
+        获取 TodoWrite 任务列表的渲染文本
+
+        Returns:
+            格式化的任务列表文本
+        """
+        return self.todo_manager.get_todos_render()
+
+    def get_todos(self) -> list:
+        """
+        获取 TodoWrite 任务列表（原始格式）
+
+        Returns:
+            任务列表
+        """
+        return self.todo_manager.get_todos()
 
     def process_user_input(self, user_input):
         """
