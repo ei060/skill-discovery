@@ -1,0 +1,28 @@
+{
+  "mcpServers": {
+    "opennews": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "D:\\ClaudeWork\\AI_Roland\\system\\skills\\opennews-mcp",
+        "run",
+        "opennews-mcp"
+      ],
+      "env": {
+        "OPENNEWS_TOKEN": "YOUR_TOKEN_HERE"
+      }
+    },
+    "twitter": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "D:\\ClaudeWork\\AI_Roland\\system\\skills\\opentwitter-mcp",
+        "run",
+        "twitter-mcp"
+      ],
+      "env": {
+        "TWITTER_TOKEN": "YOUR_TOKEN_HERE"
+      }
+    }
+  }
+}

@@ -1,0 +1,235 @@
+# ========================================
+# Python 运行时生成文件（100% 安全）
+# ========================================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ========================================
+# Python 编译产物（100% 安全）
+# ========================================
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ========================================
+# 数据库文件（100% 安全）
+# ========================================
+*.db
+*.sqlite
+*.sqlite3
+
+# ========================================
+# IDE 配置（100% 安全）
+# ========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.kiro/
+
+# ========================================
+# Claude Code 运行时文件（100% 安全）
+# ========================================
+.agents/
+.browser-profile/
+.claude/knowledge/
+.claude/projects/
+
+# ========================================
+# Node.js 依赖（100% 安全）
+# ========================================
+node_modules/
+
+# ========================================
+# 日志文件（100% 安全）
+# ========================================
+*.log
+logs/
+pinchtab_server*.log
+
+# ========================================
+# 下载的安装包（100% 安全）
+# ========================================
+*.msi
+*.zip
+*.tar.gz
+DockerDesktopInstaller.exe
+go1.23.6.windows-amd64.*
+
+# ========================================
+# 浏览器自动化临时文件（100% 安全）
+# ========================================
+browser-automation/
+browser-control-local
+browser-control-package
+playwright-bot-bypass-test/
+
+# ========================================
+# 外部克隆项目（100% 安全）
+# ========================================
+everything-claude-code/
+learn-claude-code/
+awesome-openclaw-skills/
+
+# ========================================
+# 临时目录（100% 安全）
+# ========================================
+temp_skills/
+cache/
+.slides/
+video_frames/
+investment_report_charts/
+
+# ========================================
+# AI Roland 运行时数据（100% 安全）
+# ========================================
+AI_Roland/memory/
+AI_Roland/技术库/
+AI_Roland/记录库/
+AI_Roland/AI_Roland/
+AI_Roland/sessions/
+AI_Roland/system/sessions/
+AI_Roland/system/agents/memory/
+AI_Roland/system/agents/monitor/
+AI_Roland/system/agents/meta/
+AI_Roland/system/logs/
+AI_Roland/system/improvement_data/
+AI_Roland/system/memory_tree/
+
+# ========================================
+# 音视频处理临时文件（100% 安全）
+# ========================================
+*.wav
+*.mp3
+*.mp4
+*.avi
+
+# ========================================
+# Windows 系统文件（100% 安全）
+# ========================================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ========================================
+# 运行时状态 JSON（安全忽略）
+# ========================================
+AI_Roland/current_task.json
+AI_Roland/proxy_config.json
+AI_Roland/system/agents/messages.json
+status_*.json
+artifact_*.json
+
+# ========================================
+# 测试数据 JSON（安全忽略）
+# ========================================
+*_github_info.json
+*_search_results.json
+*_links*.json
+*_test_result.json
+*_results.json
+*_data.json
+*_info.json
+*_content.json
+*_video*.json
+*_result.json
+tweet_*.json
+api_requests.json
+source_info.json
+web_result.json
+ai_memory_projects.json
+*_cookies.json
+*_post_results.json
+agents/messages.json
+agents/test_results.json
+artifacts_check.json
+devops_results.json
+
+# ========================================
+# 调试截图（安全忽略）
+# ========================================
+debug_*.png
+error*.png
+*_screenshot.png
+*_test*.png
+reddit_*.png
+twitter*.png
+tweet*.png
+*_nitter_*.png
+xiaohongshu_*.png
+chrome_devtools_*.png
+login_page_*.png
+step*.png
+audio_waveform.png
+current_ip_check.png
+test_stealth*.png
+
+# AI Roland 截图（除了文档）
+AI_Roland/*.png
+!docs/images/*.png
+
+# ========================================
+# Node.js 锁文件
+# ========================================
+package-lock.json
+
+# ========================================
+# 临时空设备文件
+# ========================================
+nul
+
+# ========================================
+# 临时调试脚本（安全忽略）
+# ========================================
+test_*.py
+fix_*.py
+diagnose_*.py
+verify_*.py
+check_*.py
+extract_*.py
+fetch_*.py
+publish_*.py
+*_demo.py
+*_poster.py
+*_helper.py
+transcribe_*.py
+convert_*.py
+*_v2.py
+*_v3.py
+*_fixed.py
+*_simple.py
+analyze_*.py
+create_*.py
+generate_*.py
+get_*.py
+show_*.py
+probe_*.py
+visit_*.py
+search_*.py
+setup_*.py
+link_*.py
+investigate_*.py
+*_simplified.py
+final_*.py
+
+# AI Buffett 临时脚本
+aapl_*.py
+ai_buffett_*.py
+
+# 其他临时工具脚本
+kill_bots.py
+open_explorer.py
+thread_pool.py
+demo_*.py
+*_solution.py
+quant_database.py
+china_data_source.py
+engine_head.py
+read_youtube_with_cookies.py
+reddit_link_post.py
+reddit_post_with_api.py
