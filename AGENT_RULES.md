@@ -505,3 +505,237 @@ TaskUpdate(task_id="2", status="completed")
 - 根据实际需求决定是否整合
 - 优先解决实际问题
 - 保持最小复杂度
+
+---
+
+## 19. Subagent 使用规则
+
+### 19.1 何时使用 Subagent
+
+Subagent 是用于**上下文隔离**的轻量级临时 Agent。使用 Subagent 的场景：
+
+**必须使用 Subagent**：
+1. **探索性任务**：代码库探索、文件搜索、模式识别
+   - 示例：探索 AI_Roland/system/ 目录结构
+   - 原因：保持主上下文干净，避免污染
+
+2. **阅读/总结类**：大量文件读取后总结
+   - 示例：读取 10+ 个配置文件并总结差异
+   - 原因：隔离大量文件内容，只保留摘要
+
+3. **长任务压缩**：上下文过长时整理
+   - 示例：超过 50 轮对话后重新梳理
+   - 原因：压缩历史，提炼关键信息
+
+**可选使用 Subagent**：
+4. **独立验证**：需要第二意见时
+5. **并行任务**：多个独立任务同时执行
+6. **风险隔离**：可能失败的试验性任务
+
+**不应该使用 Subagent**：
+- ❌ 简单的单文件修改
+- ❌ 需要与主 Agent 密切交互的任务
+- ❌ 已经在正确上下文中的任务
+- ❌ 超快速任务（执行时间 < 10秒）
+
+### 19.2 Subagent 类型
+
+| 类型 | 用途 | 工具限制 | 超时 | 是否确认 |
+|------|------|----------|------|----------|
+| `explore` | 代码库探索 | Read, Glob, Grep | 300s | 否 |
+| `research` | 资料研究 | Read, WebSearch, WebFetch, Grep | 600s | 否 |
+| `coding` | 编码任务 | Read, Write, Edit, Bash, Glob, Grep | 900s | 是 |
+| `review` | 代码审查 | Read, Grep | 300s | 否 |
+| `test` | 测试任务 | Read, Bash, Grep, Glob | 600s | 否 |
+| `analyze` | 分析任务 | Read, Grep, Glob, Bash | 600s | 否 |
+
+**选择建议**：
+- 探索目录结构 → `explore`
+- 搜索代码模式 → `explore`
+- 研究外部资料 → `research`
+- 编写新功能 → `coding`
+- 审查代码质量 → `review`
+- 运行测试 → `test`
+
+### 19.3 Subagent 使用流程
+
+**完整流程**：
+1. **判断**：任务是否适合使用 Subagent（规则19.1）
+2. **选择类型**：根据任务性质选择合适的 Subagent 类型（规则19.2）
+3. **派生**：使用 SubagentManager 派生 Subagent
+4. **执行**：Subagent 在隔离上下文中执行任务
+5. **整合**：主 Agent 接收并整合 Subagent 的结果
+6. **清理**：Subagent 资源被自动清理
+
+**示例代码**：
+```python
+# 派生并执行 Subagent（便捷方法）
+from AI_Roland.system.agents.subagent_manager import SubagentManager
+
+manager = SubagentManager()
+result = manager.spawn_and_execute(
+    task="探索 AI_Roland/system/ 目录结构",
+    subagent_type="explore",
+    auto_cleanup=True
+)
+
+if result.status == "completed":
+    print(f"结果: {result.result}")
+else:
+    print(f"错误: {result.error}")
+```
+
+**分步流程**（更多控制）：
+```python
+# 1. 派生
+subagent_id = manager.spawn_subagent(
+    task="读取所有配置文件并总结",
+    subagent_type="research"
+)
+
+# 2. 获取上下文
+context = manager.get_subagent_context(subagent_id)
+print(f"工作目录: {context.working_directory}")
+
+# 3. 执行（使用自定义回调）
+def my_execution_callback(context):
+    # 自定义执行逻辑
+    return {"summary": "..."}
+
+result = manager.execute_subagent(subagent_id, my_execution_callback)
+
+# 4. 清理
+manager.cleanup_subagent(subagent_id)
+```
+
+### 19.4 Subagent 结果格式
+
+Subagent 返回的结果应遵循统一格式：
+
+```python
+{
+    "status": "completed",  # completed, failed, timeout, cancelled
+    "result": {
+        "summary": "任务摘要",
+        "findings": ["发现1", "发现2"],
+        "details": {...},  # 可选的详细信息
+        "files_processed": ["file1.py", "file2.py"],  # 可选
+        "recommendations": [...]  # 可选
+    },
+    "error": None,
+    "execution_time": 12.5,  # 秒
+    "turns_used": 8
+}
+```
+
+**主 Agent 整合建议**：
+- 优先使用 `summary` 字段
+- `findings` 用于关键发现
+- `details` 仅在需要时查看
+- 验证 `status` 确保执行成功
+
+### 19.5 Subagent 最佳实践
+
+**DO（推荐）**：
+- ✅ 明确定义任务边界
+- ✅ 选择合适的 Subagent 类型
+- ✅ 设置合理的超时时间
+- ✅ 验证 Subagent 返回的结果
+- ✅ 自动清理 Subagent 资源
+- ✅ 记录 Subagent 执行日志
+
+**DON'T（不推荐）**：
+- ❌ 派生过多 Subagent（建议 < 5个并行）
+- ❌ 在 Subagent 中执行敏感操作
+- ❌ 忽略 Subagent 的错误状态
+- ❌ 让 Subagent 执行超长任务（> 15分钟）
+- ❌ 在 Subagent 中嵌套 Subagent（避免）
+
+### 19.6 Subagent 监控与调试
+
+**查看活跃 Subagent**：
+```python
+manager = SubagentManager()
+stats = manager.get_stats()
+print(f"活跃 Subagent 数量: {stats['active_count']}")
+print(f"Subagent IDs: {stats['subagent_ids']}")
+```
+
+**清理僵尸 Subagent**：
+```python
+# 清理所有活跃 Subagent
+manager.cleanup_all()
+
+# 或清理特定 Subagent
+manager.cleanup_subagent(subagent_id)
+```
+
+**查看日志**：
+```bash
+# Subagent 日志文件
+tail -f AI_Roland/system/agents/subagents/subagent.log
+```
+
+### 19.7 与 Claude Code Task tool 的集成
+
+**本系统的 Subagent 与 Claude Code 的 Task tool 关系**：
+
+| 特性 | 本系统 Subagent | Claude Code Task tool |
+|------|-----------------|---------------------|
+| 用途 | 内部任务隔离 | 外部子任务派生 |
+| 上下文 | 完全隔离 | 共享部分上下文 |
+| 工具限制 | 严格白名单 | 按需分配 |
+| 生命周期 | 临时（用完即毁） | 持久（直到任务完成） |
+| 适用场景 | 探索性任务 | 编码、测试、审查等 |
+
+**推荐使用策略**：
+- 探索性任务（目录探索、文件搜索）→ 本系统 Subagent
+- 编码任务（写代码、修复 bug）→ Claude Code Task tool
+- 两者可以结合使用：Subagent 探索 → Task tool 执行
+
+---
+
+## 20. 系统升级路线图
+
+### 20.1 已完成阶段
+
+**Phase 0: 规则层建设** ✅
+- AGENT_RULES.md 建立
+- 核心规则定义完成
+
+**Phase 1: TodoWrite 收口** ✅
+- TaskCreate/TaskUpdate 工具使用
+- 长任务跟踪机制
+
+**Phase 2: Subagent 最小落地** ✅
+- subagent_config.py - 配置定义
+- subagent_manager.py - 核心管理器
+- AGENT_RULES.md 规则更新
+
+**Phase 2: TaskDispatcher 最小试点** ✅ (2026-03-27)
+- task_dispatcher.py - 捕获 TaskCreate/TaskUpdate
+- task_state_manager.py - 任务状态持久化
+- restore_session.py - 会话自动恢复
+- Hook 链完整配置（settings.local.json）
+- 核心功能 100% 验证通过
+- 详见：`AI_Roland/日记/2026-03-27_TaskDispatcher试点里程碑报告.md`
+
+### 20.2 进行中阶段
+
+*暂无进行中阶段*
+
+### 20.3 未来阶段
+
+**Phase 3: 上下文压缩**（s06）
+- 三层压缩机制
+- 自动触发压缩
+
+**Phase 4: 任务图系统**（s07）
+- 持久化任务
+- 依赖关系管理
+
+**Phase 5: 多 Agent 协作**（s09-s12）
+- Agent Teams
+- Team Protocols
+- Autonomous Agents
+- Worktree Isolation
