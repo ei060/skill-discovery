@@ -105,20 +105,20 @@ def save_execution_experience(agent_name: str, task: str):
         # 保存到文件
         mgr._save_agent_memory(roland_name)
 
-        # 记录日志
-        log_file = Path(__file__).parent.parent / 'hooks' / 'memory_save.log'
-        with open(log_file, 'a', encoding='utf-8', errors='replace') as f:
-            f.write(f"{datetime.now(timezone.utc).isoformat()} | "
-                   f"Agent: {agent_name} -> {roland_name} | "
-                   f"Experience saved\n")
+        # 记录日志（使用轮转系统）
+        from log_utils import write_log_with_rotation
+        write_log_with_rotation(
+            'memory_save.log',
+            f"Agent: {agent_name} -> {roland_name} | Experience saved"
+        )
 
     except Exception as e:
         # 静默失败
-        error_file = Path(__file__).parent.parent / 'hooks' / 'memory_errors.log'
-        with open(error_file, 'a', encoding='utf-8', errors='replace') as f:
-            f.write(f"{datetime.now(timezone.utc).isoformat()} | "
-                   f"Save Error: {str(e)} | "
-                   f"Agent: {agent_name}\n")
+        from log_utils import write_log_with_rotation
+        write_log_with_rotation(
+            'memory_errors.log',
+            f"Save Error: {str(e)} | Agent: {agent_name}"
+        )
 
 def cleanup_temp_files():
     """清理临时记忆文件"""

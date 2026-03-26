@@ -83,25 +83,22 @@ def inject_memory(agent_name: str) -> str:
         # 设置环境变量，告诉ECC agent读取这个文件
         os.environ['CLAUDE_AGENT_MEMORY_FILE'] = temp_file.name
 
-        # 记录日志
-        log_file = Path(__file__).parent.parent / 'hooks' / 'memory_injection.log'
-        with open(log_file, 'a', encoding='utf-8') as f:
-            from datetime import datetime, timezone
-            f.write(f"{datetime.now(timezone.utc).isoformat()} | "
-                   f"Agent: {agent_name} | "
-                   f"Memory: {len(memory_prompt)} chars | "
-                   f"File: {temp_file.name}\n")
+        # 记录日志（使用轮转系统）
+        from log_utils import write_log_with_rotation
+        write_log_with_rotation(
+            'memory_injection.log',
+            f"Agent: {agent_name} | Memory: {len(memory_prompt)} chars | File: {temp_file.name}"
+        )
 
         return temp_file.name
 
     except Exception as e:
         # 静默失败，不影响正常执行
-        error_file = Path(__file__).parent.parent / 'hooks' / 'memory_errors.log'
-        with open(error_file, 'a', encoding='utf-8') as f:
-            from datetime import datetime, timezone
-            f.write(f"{datetime.now(timezone.utc).isoformat()} | "
-                   f"Error: {str(e)} | "
-                   f"Agent: {agent_name}\n")
+        from log_utils import write_log_with_rotation
+        write_log_with_rotation(
+            'memory_errors.log',
+            f"Error: {str(e)} | Agent: {agent_name}"
+        )
         return ""
 
 def main():
