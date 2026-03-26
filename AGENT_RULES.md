@@ -712,13 +712,21 @@ tail -f AI_Roland/system/agents/subagents/subagent.log
 - subagent_manager.py - 核心管理器
 - AGENT_RULES.md 规则更新
 
-**Phase 2: TaskDispatcher 最小试点** ✅ (2026-03-27)
+**Phase 2A: TaskDispatcher 最小试点** ✅ (2026-03-27)
 - task_dispatcher.py - 捕获 TaskCreate/TaskUpdate
 - task_state_manager.py - 任务状态持久化
 - restore_session.py - 会话自动恢复
 - Hook 链完整配置（settings.local.json）
 - 核心功能 100% 验证通过
 - 详见：`AI_Roland/日记/2026-03-27_TaskDispatcher试点里程碑报告.md`
+
+**Phase 2B: Memory Hooks 验证** ✅ (2026-03-27)
+- inject_memory.py - 子 Agent 记忆注入
+- save_memory.py - 子 Agent 经验保存
+- Hook 触发验证（matcher="Task"）
+- 日志记录验证（UTC 时间戳）
+- 临时文件管理验证
+- 详见：`AI_Roland/日记/2026-03-27_第二阶段验证报告_MemoryHooks.md`
 
 ### 20.2 进行中阶段
 
