@@ -19,13 +19,20 @@ system_path = Path(__file__).parent.parent
 sys.path.insert(0, str(system_path))
 
 def read_stdin_json():
-    """从stdin读取JSON数据（Claude Code hook方式）"""
+    """从stdin读取JSON数据（Claude Code hook方式）
+
+    关键修复：使用 sys.stdin.buffer 读取原始字节，然后用 UTF-8 解码
+    避免在 Windows 上被系统默认编码（GBK）错误解码
+    """
     try:
-        stdin_data = sys.stdin.read()
-        if not stdin_data:
+        # 读取原始字节并显式使用 UTF-8 解码
+        raw_bytes = sys.stdin.buffer.read()
+        if not raw_bytes:
             return None
+        stdin_data = raw_bytes.decode('utf-8')
         return json.loads(stdin_data)
-    except:
+    except Exception as e:
+        # 静默失败，不影响主流程
         return None
 
 def extract_agent_info_from_input(tool_input: dict) -> tuple:
