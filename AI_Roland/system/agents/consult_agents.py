@@ -73,8 +73,10 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         user_input = ' '.join(sys.argv[1:])
     else:
-        # 从标准输入读取
-        user_input = sys.stdin.read().strip()
+        # 从标准输入读取（安全地）
+        from system.sys_utils import safe_read_stdin
+        stdin_data = safe_read_stdin()
+        user_input = stdin_data.strip() if stdin_data else ""
 
     if not user_input:
         print("❌ 请提供输入")

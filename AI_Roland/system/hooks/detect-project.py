@@ -15,11 +15,25 @@ from pathlib import Path
 
 
 def detect_project_from_stdin() -> dict:
-    """从标准输入读取上下文并检测项目"""
+    """从标准输入读取上下文并检测项目（安全地）"""
     import json
 
-    # 读取标准输入
-    context = sys.stdin.read()
+    # 读取标准输入（安全地）
+    from system.sys_utils import safe_read_stdin
+    context = safe_read_stdin()
+
+    if not context:
+        # 没有输入，使用当前目录
+        cwd = Path.cwd().resolve()
+        project_id = hashlib.md5(str(cwd).encode()).hexdigest()[:12]
+
+        return {
+            "project_name": cwd.name,
+            "project_id": f"{cwd.name} ({project_id})",
+            "project_path": str(cwd),
+            "detected_from": "cwd",
+            "confidence": "low"
+        }
 
     # 尝试解析 JSON
     try:
