@@ -4,25 +4,40 @@
   "last_monthly_merge": null,
   "last_storage_review": null,
   "current_session": "2026-02-19 22:58",
-  "heartbeat_count": 29883,
-  "last_heartbeat": "2026-03-28T19:24:36.039522",
   "last_decay_date": "2026-03-28",
   "last_cleanup_date": "2026-03-28",
   "skill_discovery_pending": [
-    "浏览器自动化",
-    "AI 智能体",
-    "Python 脚本工具",
-    "API 集成",
     "DevOps 工具",
     "数据分析工具"
   ],
-  "skill_discovery_last_check": "2026-03-05T09:30:04.180319",
+  "skill_discovery_last_check": "2026-03-28T18:30:00.000000",
+  "skill_discovery_integrated": [
+    {
+      "name": "浏览器自动化",
+      "skill": "browser-control",
+      "integrated_date": "2026-03-15"
+    },
+    {
+      "name": "AI 智能体",
+      "skill": "ai-roland-secretary",
+      "integrated_date": "2026-03-15"
+    },
+    {
+      "name": "Python 脚本工具",
+      "skill": "mediacrawler",
+      "integrated_date": "2026-03-15"
+    },
+    {
+      "name": "API 集成",
+      "skill": "ask-search",
+      "integrated_date": "2026-03-15"
+    }
+  ],
   "browser_status": "ready",
   "browser_start_time": "2026-03-27T19:52:05.717438",
   "browser_connections": [
     "Google",
     "Twitter/X",
     "Reddit"
-  ],
-  "browser_error": "'NoneType' object has no attribute 'isatty'"
+  ]
 }
