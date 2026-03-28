@@ -120,6 +120,39 @@ class RolandEngine:
         with open(state_file, 'w', encoding='utf-8') as f:
             json.dump(self.state, f, ensure_ascii=False, indent=2)
 
+    def save_heartbeat(self, count: int, timestamp: str):
+        """
+        保存心跳信息到独立的 heartbeat.json
+        避免覆盖 system_state.json 中的手动修改
+
+        Args:
+            count: 心跳计数
+            timestamp: ISO格式时间戳
+        """
+        heartbeat_file = self.workspace / "heartbeat.json"
+
+        # 读取现有心跳数据（如果存在）
+        if heartbeat_file.exists():
+            try:
+                with open(heartbeat_file, 'r', encoding='utf-8') as f:
+                    heartbeat_data = json.load(f)
+            except (json.JSONDecodeError, IOError):
+                heartbeat_data = {}
+        else:
+            heartbeat_data = {}
+
+        # 更新心跳数据
+        heartbeat_data["heartbeat_count"] = count
+        heartbeat_data["last_heartbeat"] = timestamp
+
+        # 首次启动时记录启动时间
+        if "daemon_start_time" not in heartbeat_data:
+            heartbeat_data["daemon_start_time"] = timestamp
+
+        # 保存到文件
+        with open(heartbeat_file, 'w', encoding='utf-8') as f:
+            json.dump(heartbeat_data, f, ensure_ascii=False, indent=2)
+
     # 📋 TodoWrite 任务列表相关方法
 
     def update_todos(self, todos: list) -> bool:

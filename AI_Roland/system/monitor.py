@@ -59,12 +59,22 @@ def show_status():
     # 2. 系统状态
     print("[系统状态]")
     print("-"*60)
+
+    # 读取心跳信息（从独立的 heartbeat.json）
+    heartbeat_file = workspace / "heartbeat.json"
+    if heartbeat_file.exists():
+        with open(heartbeat_file, 'r', encoding='utf-8') as f:
+            heartbeat = json.load(f)
+        print(f"  心跳计数: {heartbeat.get('heartbeat_count', 0)}")
+        print(f"  上次心跳: {heartbeat.get('last_heartbeat', 'N/A')}")
+    else:
+        print(f"  心跳计数: 0")
+        print(f"  上次心跳: N/A")
+
+    # 读取其他系统状态（从 system_state.json）
     if state_file.exists():
         with open(state_file, 'r', encoding='utf-8') as f:
             state = json.load(f)
-
-        print(f"  心跳计数: {state.get('heartbeat_count', 0)}")
-        print(f"  上次心跳: {state.get('last_heartbeat', 'N/A')}")
         print(f"  上次简报: {state.get('last_daily_briefing', 'N/A')}")
         print(f"  当前会话: {state.get('current_session', 'N/A')}")
     else:

@@ -96,12 +96,19 @@ class RolandDaemon:
         """心跳循环 - 定期自主思考"""
         while self.running:
             try:
-                self.logger.info(f"[Heartbeat] 心跳 #{self.engine.state.get('heartbeat_count', 0) + 1}")
+                # 计算新的心跳计数
+                current_count = self.engine.state.get('heartbeat_count', 0)
+                new_count = current_count + 1
+                timestamp = datetime.now().isoformat()
 
-                # 更新心跳计数
-                self.engine.state["heartbeat_count"] = self.engine.state.get("heartbeat_count", 0) + 1
-                self.engine.state["last_heartbeat"] = datetime.now().isoformat()
-                self.engine.save_state()
+                self.logger.info(f"[Heartbeat] 心跳 #{new_count}")
+
+                # 更新心跳计数到独立文件（不再覆盖 system_state.json）
+                self.engine.save_heartbeat(new_count, timestamp)
+
+                # 同时更新内存中的状态（用于读取）
+                self.engine.state["heartbeat_count"] = new_count
+                self.engine.state["last_heartbeat"] = timestamp
 
                 # 自动更新任务统计
                 self._update_task_stats()

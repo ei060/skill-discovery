@@ -47,7 +47,11 @@
       "Bash(C:UsersDELLAppDataLocalProgramsPythonPython314python.exe -m notebooklm login)",
       "Bash(cmd:*)",
       "Bash(git reset:*)",
-      "Bash(git init:*)"
+      "Bash(git init:*)",
+      "Bash(xargs:*)",
+      "Bash(git rm:*)",
+      "Bash(test:*)",
+      "Bash(git restore:*)"
     ]
   }
 }
