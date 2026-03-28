@@ -233,3 +233,27 @@ engine_head.py
 read_youtube_with_cookies.py
 reddit_link_post.py
 reddit_post_with_api.py
+
+# ========================================
+# 备份文件（100% 安全）
+# ========================================
+*.bak
+*.disabled
+.claude/*.bak
+
+# ========================================
+# 外部分析/测试/发布目录（100% 安全）
+# ========================================
+claude-to-im-analysis/
+claude-to-im-skill-analysis/
+github-publish-test/
+skill-discovery-release/
+
+# ========================================
+# AI Roland 子项目（独立 git 仓库）
+# ========================================
+AI_Roland/MediaCrawler/
+AI_Roland/system/skills/ask-search/
+AI_Roland/system/skills/opennews-mcp/
+AI_Roland/system/skills/opentwitter-mcp/
+AI_Roland/.claude/skills/ask-search/

@@ -1,0 +1,53 @@
+{
+  "timestamp": "2026-03-28T18:01:30.670040",
+  "gaps": [
+    {
+      "from": "2026-02-21 00:00:00",
+      "to": "2026-03-18 00:00:00",
+      "days": 24,
+      "type": "diary_gap"
+    },
+    {
+      "from": "2026-03-18 00:00:00",
+      "to": "2026-03-27 00:00:00",
+      "days": 8,
+      "type": "diary_gap"
+    }
+  ],
+  "new_projects": [
+    {
+      "name": "learn-claude-code",
+      "path": "D:\\ClaudeWork\\learn-claude-code",
+      "last_modified": "2026-03-21 07:59:30.890576",
+      "type": "git_project"
+    }
+  ],
+  "new_files": [
+    {
+      "name": "AGENT_RULES.md",
+      "path": "D:\\ClaudeWork\\AGENT_RULES.md",
+      "last_modified": "2026-03-27 00:31:30.533968",
+      "type": "important_file"
+    }
+  ],
+  "coverage": {
+    "total_projects": 9,
+    "recorded_projects": 1,
+    "missing_projects": [
+      "awesome-openclaw-skills",
+      "claude-to-im-analysis",
+      "claude-to-im-skill-analysis",
+      "everything-claude-code",
+      "github-publish-test",
+      "learn-claude-code",
+      "skill-discovery-release",
+      "temp_skills"
+    ]
+  },
+  "recommendations": [
+    "发现 2 个记忆空白期，共 32 天未记录",
+    "发现 1 个未记录的项目",
+    "发现 1 个未记录的重要文件",
+    "语义记忆覆盖率: 11.1% (1/9)"
+  ]
+}

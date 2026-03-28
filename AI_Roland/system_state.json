@@ -1,9 +1,28 @@
 {
-  "last_daily_briefing": "2026-02-22T09:00:11.446801",
+  "last_daily_briefing": "2026-03-28T09:00:55.425652",
   "last_sunday_reminder": null,
   "last_monthly_merge": null,
   "last_storage_review": null,
   "current_session": "2026-02-19 22:58",
-  "heartbeat_count": 1359,
-  "last_heartbeat": "2026-02-22T10:47:15.097779"
+  "heartbeat_count": 29813,
+  "last_heartbeat": "2026-03-28T18:14:31.506768",
+  "last_decay_date": "2026-03-28",
+  "last_cleanup_date": "2026-03-28",
+  "skill_discovery_pending": [
+    "浏览器自动化",
+    "AI 智能体",
+    "Python 脚本工具",
+    "API 集成",
+    "DevOps 工具",
+    "数据分析工具"
+  ],
+  "skill_discovery_last_check": "2026-03-05T09:30:04.180319",
+  "browser_status": "ready",
+  "browser_start_time": "2026-03-27T19:52:05.717438",
+  "browser_connections": [
+    "Google",
+    "Twitter/X",
+    "Reddit"
+  ],
+  "browser_error": "'NoneType' object has no attribute 'isatty'"
 }

@@ -856,13 +856,10 @@ def get_controller(proxy: str = None, headless: bool = None) -> BrowserControlle
         _controller = BrowserController(proxy=proxy)
         # 自动检测：如果未指定，检查是否在后台环境
         if headless is None:
-            import sys
-            # 检查是否在守护进程/后台环境中（安全地检查 stdin）
-            try:
-                is_atty = sys.stdin is not None and sys.stdin.isatty()
-            except (AttributeError, OSError):
-                is_atty = False
-            headless = not is_atty or not hasattr(sys.stdout, 'isatty')
+            # 使用 sys_utils 的安全接口检测环境
+            from sys_utils import SafeIO
+            is_interactive = SafeIO.is_interactive()
+            headless = not is_interactive
         _controller.start(headless=headless)
     return _controller
 

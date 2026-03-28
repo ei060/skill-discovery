@@ -120,12 +120,12 @@ def save_execution_experience(agent_name: str, task: str):
         )
 
     except Exception as e:
-        # 静默失败
+        # 改进：记录详细错误并通知用户
         from log_utils import write_log_with_rotation
-        write_log_with_rotation(
-            'memory_errors.log',
-            f"Save Error: {str(e)} | Agent: {agent_name}"
-        )
+        error_msg = f"Save Error: {str(e)} | Agent: {agent_name}"
+        write_log_with_rotation('memory_errors.log', error_msg)
+        # 输出到stderr，让用户知道记忆保存失败
+        print(f"[Memory Save Warning] Failed to save experience for {agent_name}: {str(e)}", file=sys.stderr)
 
 def cleanup_temp_files():
     """清理临时记忆文件"""

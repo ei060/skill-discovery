@@ -100,12 +100,12 @@ def inject_memory(agent_name: str) -> str:
         return temp_file.name
 
     except Exception as e:
-        # 静默失败，不影响正常执行
+        # 改进：记录详细错误但使用用户友好的通知
         from log_utils import write_log_with_rotation
-        write_log_with_rotation(
-            'memory_errors.log',
-            f"Error: {str(e)} | Agent: {agent_name}"
-        )
+        error_msg = f"Error: {str(e)} | Agent: {agent_name}"
+        write_log_with_rotation('memory_errors.log', error_msg)
+        # 输出到stderr，让用户知道记忆系统有问题
+        print(f"[Memory Injection Warning] Failed to inject memory for {agent_name}: {str(e)}", file=sys.stderr)
         return ""
 
 def main():
