@@ -168,5 +168,29 @@
     "last_updated": "2026-03-15",
     "skill_file": "D:\\ClaudeWork\\AI_Roland\\system\\skills\\test_skill_v2\\SKILL.md",
     "status": "active"
+  },
+  "web-access": {
+    "name": "web-access",
+    "description": "完整联网能力：搜索、网页抓取、CDP浏览器操作、站点经验积累。支持WebSearch/WebFetch/curl/Jina/CDP，自动选择最佳联网策略，支持动态页面、交互操作、视频截帧",
+    "version": "2.4.1",
+    "author": "一泽Eze",
+    "origin": "external",
+    "github": "https://github.com/eze-is/web-access",
+    "tags": [
+      "web",
+      "search",
+      "scraping",
+      "browser",
+      "cdp",
+      "automation"
+    ],
+    "category": "network",
+    "priority": 10,
+    "depends_on": [],
+    "last_updated": "2026-03-28",
+    "skill_file": "D:\\ClaudeWork\\AI_Roland\\system\\skills\\web-access\\SKILL.md",
+    "status": "active",
+    "requires_cdp": true,
+    "requires_nodejs": "22+"
   }
 }
