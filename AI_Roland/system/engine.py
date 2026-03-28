@@ -104,6 +104,11 @@ class RolandEngine:
         if state_file.exists():
             with open(state_file, 'r', encoding='utf-8') as f:
                 self.state = json.load(f)
+
+            # 清理旧的心跳字段（如果存在）
+            # 这些字段现在应该只存在于 heartbeat.json 中
+            self.state.pop('heartbeat_count', None)
+            self.state.pop('last_heartbeat', None)
         else:
             self.state = {
                 "last_daily_briefing": None,
