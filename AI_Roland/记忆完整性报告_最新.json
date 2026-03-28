@@ -1,53 +1,57 @@
 {
-  "timestamp": "2026-03-28T18:01:30.670040",
+  "timestamp": "2026-03-28T18:22:21.282315",
+  "recorded_dates_count": 4,
+  "special_reports_count": 6,
   "gaps": [
     {
-      "from": "2026-02-21 00:00:00",
-      "to": "2026-03-18 00:00:00",
+      "from": "2026-02-22",
+      "to": "2026-03-17",
       "days": 24,
       "type": "diary_gap"
     },
     {
-      "from": "2026-03-18 00:00:00",
-      "to": "2026-03-27 00:00:00",
+      "from": "2026-03-19",
+      "to": "2026-03-26",
       "days": 8,
       "type": "diary_gap"
     }
   ],
-  "new_projects": [
+  "special_reports": [
     {
-      "name": "learn-claude-code",
-      "path": "D:\\ClaudeWork\\learn-claude-code",
-      "last_modified": "2026-03-21 07:59:30.890576",
-      "type": "git_project"
-    }
-  ],
-  "new_files": [
+      "date": "2026-03-18",
+      "file": "2026-03-18_Hook系统修复完成总结.md",
+      "title": "Hook系统修复完成总结"
+    },
     {
-      "name": "AGENT_RULES.md",
-      "path": "D:\\ClaudeWork\\AGENT_RULES.md",
-      "last_modified": "2026-03-27 00:31:30.533968",
-      "type": "important_file"
+      "date": "2026-03-18",
+      "file": "2026-03-18_Hook配置问题修复报告.md",
+      "title": "Hook配置问题修复报告"
+    },
+    {
+      "date": "2026-03-27",
+      "file": "2026-03-27_ABC任务完成报告.md",
+      "title": "ABC任务完成报告"
+    },
+    {
+      "date": "2026-03-27",
+      "file": "2026-03-27_TaskDispatcher试点里程碑报告.md",
+      "title": "TaskDispatcher试点里程碑报告"
+    },
+    {
+      "date": "2026-03-27",
+      "file": "2026-03-27_第二阶段验证报告_MemoryHooks.md",
+      "title": "第二阶段验证报告_MemoryHooks"
+    },
+    {
+      "date": "2026-03-27",
+      "file": "2026-03-27_编码问题修复报告.md",
+      "title": "编码问题修复报告"
     }
   ],
   "coverage": {
-    "total_projects": 9,
-    "recorded_projects": 1,
-    "missing_projects": [
-      "awesome-openclaw-skills",
-      "claude-to-im-analysis",
-      "claude-to-im-skill-analysis",
-      "everything-claude-code",
-      "github-publish-test",
-      "learn-claude-code",
-      "skill-discovery-release",
-      "temp_skills"
-    ]
-  },
-  "recommendations": [
-    "发现 2 个记忆空白期，共 32 天未记录",
-    "发现 1 个未记录的项目",
-    "发现 1 个未记录的重要文件",
-    "语义记忆覆盖率: 11.1% (1/9)"
-  ]
+    "first_record": "2026-02-20",
+    "last_record": "2026-03-27",
+    "total_days": 36,
+    "recorded_days": 4
+  }
 }
