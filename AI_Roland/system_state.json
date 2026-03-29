@@ -1,16 +1,16 @@
 {
-  "last_daily_briefing": "2026-03-28T09:00:55.425652",
+  "last_daily_briefing": "2026-03-29T09:00:07.664701",
   "last_sunday_reminder": null,
   "last_monthly_merge": null,
   "last_storage_review": null,
-  "current_session": "2026-02-19 22:58",
+  "current_session": "2026-03-29 14:12",
   "last_decay_date": "2026-03-28",
   "last_cleanup_date": "2026-03-28",
   "skill_discovery_pending": [
     "DevOps 工具",
     "数据分析工具"
   ],
-  "skill_discovery_last_check": "2026-03-28T18:30:00.000000",
+  "skill_discovery_last_check": "2026-03-29T14:12:00.000000",
   "skill_discovery_integrated": [
     {
       "name": "浏览器自动化",
@@ -31,6 +31,11 @@
       "name": "API 集成",
       "skill": "ask-search",
       "integrated_date": "2026-03-15"
+    },
+    {
+      "name": "联网能力",
+      "skill": "web-access",
+      "integrated_date": "2026-03-28"
     }
   ],
   "browser_status": "ready",
